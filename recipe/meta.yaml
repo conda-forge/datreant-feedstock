@@ -1,29 +1,44 @@
+{% set version = "1.0.2" %}
+{% set sha256 = "16930239dac17f478e5f5f1e499b77b1e9f1769a8b0b48ed7e7e93f5ffa5a0ca" %}
+
 package:
   name: datreant
-  version: 1.0
+  version: {{ version }}
 
 source:
-   path: .
+  fn: datreant-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/d/datreant/datreant-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
   skip: True  # [win]
 
 requirements:
   build:
     - python
+    - pip
   run:
     - python
+    - asciitree
+    - pathlib2
+    - scandir
+    - six
+    - fuzzywuzzy
+    - python-levenshtein
+    - pyparsing
 
 test:
   imports:
     - datreant
+    - datreant.core
 
 about:
   home: http://datreant.org/
   license: BSD 3-Clause
   license_file: LICENSE
-  summary: "datreant namespace package"
+  summary: 'persistent, pythonic trees for heterogeneous data'
 
 extra:
   recipe-maintainers:
