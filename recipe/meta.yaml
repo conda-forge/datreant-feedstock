@@ -1,5 +1,5 @@
-{% set version = "1.0.2" %}
-{% set sha256 = "16930239dac17f478e5f5f1e499b77b1e9f1769a8b0b48ed7e7e93f5ffa5a0ca" %}
+{% set version = "1.1.0" %}
+{% set sha256 = "7ca02361c2b069294c84deb309e6519c51dba09f85158bcc00a8a85d4559566f" %}
 
 package:
   name: datreant
@@ -11,9 +11,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   host:
@@ -38,7 +38,7 @@ about:
   home: http://datreant.org/
   license: BSD 3-Clause
   license_file: LICENSE
-  summary: 'persistent, pythonic trees for heterogeneous data'
+  summary: persistent, pythonic trees for heterogeneous data
 
 extra:
   recipe-maintainers:
