@@ -22,9 +22,7 @@ requirements:
   run:
     - python
     - asciitree
-    - pathlib2
     - scandir
-    - six
     - fuzzywuzzy
     - python-levenshtein
     - pyparsing
