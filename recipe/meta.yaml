@@ -1,5 +1,5 @@
-{% set version = "1.1.0" %}
-{% set sha256 = "7ca02361c2b069294c84deb309e6519c51dba09f85158bcc00a8a85d4559566f" %}
+{% set version = "1.1.1" %}
+{% set sha256 = "da206b21c3eb713adedf0ea18f747fc9d3f9d049eebada3b2ee34f2dd8b688fb" %}
 
 package:
   name: datreant
