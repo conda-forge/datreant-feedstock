@@ -25,7 +25,7 @@ requirements:
     - scandir
     - fuzzywuzzy
     - python-levenshtein
-    - pyparsing
+    - pyparsing >=3.0
 
 test:
   imports:
