@@ -1,26 +1,27 @@
+{% set name = "datreant" %}
 {% set version = "1.1.1" %}
-{% set sha256 = "da206b21c3eb713adedf0ea18f747fc9d3f9d049eebada3b2ee34f2dd8b688fb" %}
 
 package:
-  name: datreant
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: datreant-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/d/datreant/datreant-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/datreant-{{ version }}.tar.gz
+  sha256: da206b21c3eb713adedf0ea18f747fc9d3f9d049eebada3b2ee34f2dd8b688fb
 
 build:
-  number: 3
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: true  # [win]
+  noarch: python
+  entry_points:
+    - datreant_07to1=datreant.scripts.datreant_07to1:main
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - python
+    - python >=3.7
     - pip
   run:
-    - python
+    - python >=3.7
     - asciitree
     - scandir
     - fuzzywuzzy
@@ -30,11 +31,15 @@ requirements:
 test:
   imports:
     - datreant
-    - datreant.core
+  commands:
+    - pip check
+    - datreant_07to1 --help
+  requires:
+    - pip
 
 about:
   home: http://datreant.org/
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: persistent, pythonic trees for heterogeneous data
 
