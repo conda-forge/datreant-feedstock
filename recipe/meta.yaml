@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/datreant-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/datreant-{{ version }}.tar.gz
   sha256: da206b21c3eb713adedf0ea18f747fc9d3f9d049eebada3b2ee34f2dd8b688fb
 
 build:
@@ -14,14 +14,14 @@ build:
   entry_points:
     - datreant_07to1=datreant.scripts.datreant_07to1:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - asciitree
     - scandir
     - fuzzywuzzy
@@ -36,6 +36,7 @@ test:
     - datreant_07to1 --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://datreant.org/
